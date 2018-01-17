@@ -32,27 +32,28 @@ print(graph)
 
 # Дисциплина восстановления
 
+###################################################################################
 cnt = 0 # количество путей
 n = 10 # количество вершин
 visited = [0,0,0,0,0,0,0,0,0,0] # отметки посещенных вершин
-v = 1 # начальная вершина
-x = 3 # конечная вершина
+v = 0 # начальная вершина
+x = 5 # конечная вершина
 def finder(graph, visited, n, v, x, cnt):
-    index = 0
     isEnd = False
 
-    while (isEnd != True):
+    for i in range(0, n):
         # пропускаем, если узел является конечным
         if (v == x):
-            index += 1
+            cnt += 1
             isEnd = True
+            break
         
-        visited[v] = True
+        visited[v] = 1
         for i in range(0, n):
             if graph[v][i] and not visited[i]:
                 finder(graph, visited, n, i, x, cnt)
         
-        visited[v] = False
+        visited[v] = 0
 
 finder(graph, visited, n, v, x, cnt)
 print(cnt)
