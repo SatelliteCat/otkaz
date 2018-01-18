@@ -1,3 +1,4 @@
+import random
 
 # Топология сети связи
 graph = [
@@ -8,11 +9,11 @@ graph = [
     [0,1,0,0,0,0,0,0,0,0], # 3
     [1,0,0,0,0,1,1,0,0,0], # 4
     [0,0,0,0,1,0,1,1,0,0], # 5
-    [1,0,0,0,0,1,0,1,0,0], # 6
+    [1,0,0,0,1,1,0,1,0,0], # 6
     [0,0,0,0,0,1,1,0,1,0], # 7
     [0,0,0,0,0,0,0,1,0,1], # 8
     [0,0,0,0,0,0,0,0,1,0]] # 9
-print(graph)
+#print(graph)
 
 # длин линий связи между узлами
 
@@ -37,21 +38,25 @@ cnt = 0 # количество путей
 n = 10 # количество вершин
 visited = [0,0,0,0,0,0,0,0,0,0] # отметки посещенных вершин
 v = 0 # начальная вершина
-x = 5 # конечная вершина
+x = 8 # конечная вершина
 def finder(graph, visited, n, v, x, cnt):
     isEnd = False
-
-    for i in range(0, n):
+    print(v)
+    #for i in range(0, n):
+    while (not isEnd):
         # пропускаем, если узел является конечным
         if (v == x):
             cnt += 1
+            print("cnt="+str(cnt))
             isEnd = True
             break
         
         visited[v] = 1
         for i in range(0, n):
-            if graph[v][i] and not visited[i]:
+            if (graph[v][i] and not visited[i]):
                 finder(graph, visited, n, i, x, cnt)
+        
+        isEnd = True
         
         visited[v] = 0
 
