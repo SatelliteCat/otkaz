@@ -7,9 +7,9 @@ graph = [
     [1,0,1,1,0,0,0,0,0,0], # 1
     [0,1,0,0,0,0,0,0,0,0], # 2
     [0,1,0,0,0,0,0,0,0,0], # 3
-    [1,0,0,0,0,1,1,0,0,0], # 4
+    [1,0,0,0,0,1,0,0,0,0], # 4
     [0,0,0,0,1,0,1,1,0,0], # 5
-    [1,0,0,0,1,1,0,1,0,0], # 6
+    [1,0,0,0,0,1,0,1,0,0], # 6
     [0,0,0,0,0,1,1,0,1,0], # 7
     [0,0,0,0,0,0,0,1,0,1], # 8
     [0,0,0,0,0,0,0,0,1,0]] # 9
@@ -54,11 +54,13 @@ def finder(graph, visited, n, v, x, cnt):
         visited[v] = 1
         for i in range(0, n):
             if (graph[v][i] and not visited[i]):
-                finder(graph, visited, n, i, x, cnt)
+                cnt = finder(graph, visited, n, i, x, cnt)
         
         isEnd = True
         
         visited[v] = 0
+        #print(v)
+    return cnt
 
-finder(graph, visited, n, v, x, cnt)
+cnt = finder(graph, visited, n, v, x, cnt)
 print(cnt)
