@@ -41,13 +41,12 @@ v = 0 # начальная вершина
 x = 8 # конечная вершина
 def finder(graph, visited, n, v, x, cnt):
     isEnd = False
-    print(v)
     #for i in range(0, n):
     while (not isEnd):
         # пропускаем, если узел является конечным
         if (v == x):
             cnt += 1
-            print("cnt="+str(cnt))
+            print(visited)
             isEnd = True
             break
         
